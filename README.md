@@ -1,5 +1,4 @@
 # elevator-prototype
-Simple elevator prototype control with Arduino and LED
 
 ## Introduction
 
