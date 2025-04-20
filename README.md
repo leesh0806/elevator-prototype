@@ -2,117 +2,28 @@
 
 ## Introduction
 
-### 주제
-| 주제 | elevator-prototype using arduino |
+### Title
+| Name | elevator-prototype using arduino |
 |:---|:---|
-| 배경 | Challenges for Periodic Control and Understanding of Various Sequences Using Arduino
+| Background | Challenges for Periodic Control and Understanding of Various Sequences Using Arduino
 
-### 기술 스택
-|분류|기술|
+### Tech Stack
+|Part|Technologies|
 |---|---|
 |Development<br/>Environment|<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=white"/> <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white"/>|
 |Language|<img src="https://img.shields.io/badge/-C++-blue?logo=cplusplus"/> 
 |Hardware|<img src="https://img.shields.io/badge/Arduino-00878F?logo=arduino&logoColor=fff&style=plastic"/> 
 |Collaborative Tools| <img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white"/> |
 
-### 팀명 : 김이박최
-| 이름 | 주요 역할 | 상세 |
-|:---:|---|---|
-| 김지연 (팀장) | **핵심지표 기능 구현**  | 핵심지표 산출식 정리 |
-| 이승훈 (팀원) | **DB 구축, 크롤링 및 분석** | 데이터 수집, 시각화, 분석|
-| 박성윤 (팀원) | **통계자료 서칭, 자료 정리**   | 출처 조사 및 전체 자료 정리 |
-| 최원호 (팀원) | **프로젝트 관리**  | 전체 일정 관리, 스토리보드 |
-
 ## 0. Research Background
 
-### 0-1. 질병 문제로 농장주는 어려움을 겪었을까?
+### Understanding and Studying Periodic Control?
 
-사회적인 변화, 그 중에서 아프리카 돼지 열병과, 구제역과 같은 축산 질병은 농장주에게 큰 피해를 주었습니다. <br/>
-축산 질병은 과연 농장주에게 어느정도의 피해를 준 것일까요? <br/>
-<br/>
-알아보기 위해 데이터 분석을 해보았습니다. 
-
-![도축가와 전염병 관계](https://github.com/user-attachments/assets/dde7e128-b6ac-48db-80b9-727ba8965990)
-출처 : 농림축산식품부 가축질병 발생현황, KOSIS 통계
-
-위 그래프는 전염병과 도축가 추이를 나타낸 그래프입니다. <br/>
-전염병이 높을 땐 도축가가 낮아지고, 전염병이 낮을 땐 도축가가 높아지는 양상을 보입니다. <br/>
-즉 전염병과 도축가는 반비례 관계를 갖고 있다는 것을 확인했습니다. <br/>
-
-![수익과 전염병 관계](https://github.com/user-attachments/assets/74efc992-bc7b-4e14-b88f-6f597ca62973)
-출처 : 농림축산식품부 가축질병 발생현황, KOSIS 통계
-
-위 그래프는 전염병(아프리카 돼지 열병, 구제역) 발생 건수와 순수익 추이를 나타낸 그래프입니다. <br/>
-그래프를 보면 농장의 순수익이 2019년과 2023년에 낮아진 것을 확인할 수 있습니다.<br/>
-하지만 그 해의 질병 그래프는 높아진 것을 확인했습니다. <br/>
-<br/>
-즉 질병 유행 수준과 농장 순수익은 반비례라는 것을 확인 할 수 있는데, <br/>
-이러한 결과는 축산 질병이 농장에게 악영향을 크게 준다고 볼 수 있습니다.
-
-**결론 : 질병 문제는 농장주에게 피해를 야기함**
-
-### 0-2. 옥수수 값의 변화가 농장주에게 끼치는 영향이 있을까?
-
-다른 사회적인 요인으로는 곡물 가격의 변동이 있습니다. <br/>
-특히 옥수수는 양돈 축산 시장에 영향을 많이 끼치는데, 돼지 사료의 90프로 이상은 옥수수이기 때문입니다. <br/>
-그럼 주 사료 재료인 옥수수 값의 변화는 농장주에게 과연 얼마나 영향을 미칠까요?<br/>
-<br/>
-데이터 분석을 통해서 알아보겠습니다.
-
-![옥수수와 사료비 관계](https://github.com/user-attachments/assets/d2810be5-3aae-45a6-84a7-6b47f5839444)
-
-그래프는 옥수수와 사료값 관계를 나타낸 그래프입니다. <br/>
-옥수수 값과 사료값은 서로 비례관계를 나타내고 있습니다.
-
-![도축가와 사료비 추이](https://github.com/user-attachments/assets/c281e16f-0715-4837-98a3-12e5f197d21f)
+While studying Arduino, I thought at first that there would be no problem if I simply put Delay to control the robot's movement, but I was coding it in the wrong way. There is a big disadvantage in that it is impossible to perform other movements at the same time without periodic control. To study periodic control, I did this task by simply simulating an elevator prototype so that I could study why periodic control is necessary and get used to coding for periodic control.
 
 
-이번 그래프는 사료비와 도축가 추이를 나타낸 그래프입니다.<br/>
-사료비 그래프와 도축가 그래프가 상당히 비슷한 양상을 나타내는 것을 볼 수 있습니다. <br/>
-<br/>
-즉 옥수수 값의 상승은 사료비 상승과 연관되어 있고, 돼지고기 값 상승에도 영향을 미치는 것을 확인했습니다. <br/>
-<br/>
-따라서 농장주는 높아진 옥수수 값으로 인해 농장 운영에 압박을 받을 수 있습니다.
 
-**결론 : 옥수수 값 변동은 농장 운영에 압박을 줄 수 있음.**
 
-### 0-3. 수익률 극대화를 위해 어떤 생산성 지표를 관리하는 것이 좋을까?
-
-양돈 양육과 관련된 데이터에는 다양한 생산성 지표들이 있습니다.
-
-![지표 간 상관관계](https://github.com/user-attachments/assets/6634b550-82e1-4018-9044-e3ad882b72af)
-
-생산성 지표 간 상관관계를 보시면, 먼저 총산자수, 실산자수, 이유두수가 서로 큰 연관성이 있는 것을 알 수 있습니다.<br/>
-
-총산자수는 어미돼지가 한 번의 분만에서 낳은 자돈의 수,<br/>
-실산자수는 어미돼지가 낳은 자돈 중 살아서 태어난 자돈의 수,<br/>
-이유두수는 어미돼지가 낳은 자돈 중 이유기(생후 21~28일)까지 생존하여 젖을 뗀 자돈 수를 의미합니다.<br/>
-
-그래서 서로 연관성이 높은 것은 당연합니다.
-
-이 세 지표와 상관관계가 높은 것으로 나타는 것이 PSY라는 지표입니다.<br/>
-PSY는 Piglet per Sow per Year라고 해서, 어미돼지 한 마리가 연간 생산한 이유자돈 수를 의미합니다.<br/>
-
-PSY는 이유두수와 모돈회전율을 곱한 것에 모돈수를 나눈 것으로로 산출되기 때문에, PSY는 결국 이유두수를 반영한 값이 됩니다.
-
-(PSY수식)
-
-PSY 값이 높다는 것은 생산성이 높다는 것을 의미하므로, 양돈 농가에서는 이 PSY를 중요하게 여기고 있습니다.<br/>
-
-![Image](https://github.com/user-attachments/assets/5d608d28-21a7-48cb-9455-4fd700b2358b)
-
-그런데 이 통계자료를 보시면, 한국의 PSY 값이 다른 국가 대비 너무 낮은 것으로 나타났습니다. 
-저희는 농장주들이 이러한 PSY와 같은 생산성 지표를 실시간으로 모니터링할 수 있다면 생산성을 높이고 수익률을 극대화할 수 있을 것이라고 보았습니다. <br/>
-
-### 0-결론
-앞서 보여드린 것처럼 사회적인 변화(질병 문제, 곡물 값 상승)는 농가 운영에 어려움을 야기할 수 있습니다. <br/>
-저희는 이러한 외부적인 요소로부터 최대한 농장주들을 보호하고, 
-농장 관리에 필요한 핵심 지표를 직관적으로 파악할 수 있게 하여, 
-농장의 수익성을 예상할 수 있는 솔루션이 필요하다고 보았습니다. <br/>
-
-우리는 데이터 기반 솔루션으로 '**양돈 관리 서비스:PIG SCOUTER**'를 제안하고자 합니다. <br/>
-양돈 관리를 위한 주요 핵심지표(PSY, MSY, 분만율, 평균실상)를 제공하고, <br/>
-사료값과 운영비, 수익 예상치를 계산해주는 서비스입니다.
 
 ## 1. 서비스를 위한 필요 데이터 수집
 
@@ -161,52 +72,5 @@ PSY 값이 높다는 것은 생산성이 높다는 것을 의미하므로, 양�
 |        |         | 두 당 돼지 순 이익 | profit_per_pig |
 
 
-## 2. 서비스 기획 (STORYBOARD)
 
-수집된 데이터를 바탕으로 기획된 서비스입니다.
 
-[스토리보드 링크](https://www.figma.com/design/hiTLHm7gLKHKqU7hOyTuaZ/PIG-SCOUTER?node-id=62-2613&t=yw4IvjsdOEWmJBgv-1)
-
-![명함](https://github.com/user-attachments/assets/dd20d22f-1109-4083-9e20-52f593233fd2)
-
-**명함 이미지** <br/>
-메인 컬러를 주황색으로 하였는데, 돼지 농장의 따뜻하고 생동감 있는 분위기를 표현하면서도 <br/>
-흙과 자연을 연상시키는 색감으로 농장환경과 잘 어우러지게 구성하였습니다.<br/>
-돼지의 건강한 성장과, 농장의 활력을 동시에 상징하며, 친근하면서 신뢰감을 주는 색상입니다.
-
-![대쉬보드](https://github.com/user-attachments/assets/3e43d9ef-5118-412f-b85c-d8e99f9d66af)
-
-**대시보드**<br/>
-농장 정보를 한눈에 볼 수 있는 대시보드입니다. <br/>
-총 돼지 수를 입력하면,월별 사료 필요량과 운영비용, 예상 수익을 계산하여 줍니다
-
-![핵심지표](https://github.com/user-attachments/assets/1c5ce062-57c2-45dd-b1ef-d99e1f9843e7)
-
-**핵심지표 산출기**<br/>
-농장 관리에 필요한 핵심 지표, MSY, PSY, 분만율, 평균실산을 계산하여 줍니다.<br/>
-전체 농장 기준으로도 평균치를 나타내주고 <br/>
-요구 정보를 입력시 개인 농장에도 맞게 지표를 산출하여줍니다.
-
-![사료비](https://github.com/user-attachments/assets/5ad69a9f-66d1-4d21-8b6b-c283f31d637b)
-
-**사료비 계산기**<br/>
-돼지 수(농장규모)를 입력시 예상 사료비용을 계산하여 줍니다. 
-
-![운영비](https://github.com/user-attachments/assets/1b724888-f9e5-4606-9fee-9454e0bfecfb)
-
-**운영비 계산기** <br/>
-돼지 수(농장규모)를 입력시 예상 운영비용을 계산하여 줍니다.<br/>
-수도광열비, 농구비, 영농시설비, 기타재료비, 차입금이자, 토지임차료, 고용노동비, 분뇨처리비, 생산관리비, 기타비용 을 계산해주고, <br/>
-마지막으로 합계 정보를 계산하여 줍니다.
-
-![수익](https://github.com/user-attachments/assets/0f00497a-f1b8-4271-b400-3c2faf3549ea)
-**수익 계산기** <br/>
-돼지 수(농장규모)를 입력시 예상 수익을 계산하여 줍니다.
-
-## Review
-| 이름 | 소감 |
-|:---:|---|
-| 김지연(팀장) |깊이 있는 분석 및 서비스 제공을 위해서는 데이터에 대한 이해가 선행되어야 함을 느꼈다. 또한 전체적인 설계를 먼저 하고 계획한 대로 진행하는 것이 프로젝트의 완성도를 높이는 데 중요하다는 것을 알게 되었다. 협조적이고 배려심있는 팀원분들을 만나서 프로젝트를 잘 마무리할 수 있었다. |
-| 이승훈(팀원) |처음에 주제 선정을 한 사람으로 올바른 결정인가 팀원들이 잘 따라와 줄 수 있을 까 걱정이 많이 되었었는데 팀원들이 너무 잘 따라와 줘서 다행이라 생각하고 데이터 수집도 다양한 방안으로 많이 가져올 수 있었다. 팀원들과 회의를 해보면서 막히는 부분도 있었지만 서로 업무를 잘 분담하여 차근차근 하나씩 진행하다 보니까 결국엔 완성해 낼 수 있었다. 요번 EDA 프로젝트가 단순히 개인적인 향상 뿐만 아니라 팀원과의 협업에 대해서도 많은 점을 배울 수 있었다. |
-| 박성윤(팀원) | |
-| 최원호(팀원) |프로젝트 업무 뿐 아니라 전체적인 일정 관리를 하였는데, 1주일이라는 시간 안에 나름 기승전결을 짜면서 여러 면에서 배움을 느꼈다. 시간이 짧아 버릴 건 버리되, 최대한 이득을 취할 수 있는 방법을 모색하는 법을 생각해보게 되었다. 각 인원이 공백 기간 없게 계획하고, 피로를 최소화하고 결과는 최대한으로 내는 업무 효율성도 중요하단 걸 느꼈다. 조사 과정에서 너무 오래 걸리는 조사는 다른 방법을 모색해보고, 시간 관계상 불가능한 영역은 과감하게 버리기도 하는 과정이 있었지만, 공백을 매끄럽게 잇기 위한 유연성도 가질 수 있는 계기가 된 거 같다. |
